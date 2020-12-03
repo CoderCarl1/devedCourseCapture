@@ -7,6 +7,9 @@ import diaphragm from '../img/diaphragm.svg'
 import money from '../img/money.svg'
 import teamwork from '../img/teamwork.svg'
 import home2 from '../img/home2.png'
+//imported styles
+import styled from 'styled-components'
+import { About, Description, Image, Hide } from '../styles'
 
 const ServicesSection = () => {
     const cardData = [
@@ -17,23 +20,41 @@ const ServicesSection = () => {
     ]
 
     return (
-        <div className="services">
-            <h2>
-                high <span>quality</span> services{' '}
-            </h2>
-            <div className="cards">
-                {cardData.map((card) => (
-                    <ServiceCard
-                        key={card.id.toString()}
-                        img={card.img}
-                        title={card.description}
-                        description={card.description}
-                    />
-                ))}
+        <Services>
+            <Description>
+                <h2>
+                    high <span>quality</span> services{' '}
+                </h2>
+                <Cards>
+                    {cardData.map((card) => (
+                        <ServiceCard
+                            key={card.id.toString()}
+                            img={card.img}
+                            title={card.description}
+                            description={card.description}
+                        />
+                    ))}
+                </Cards>
+            </Description>
+            <Image>
                 <img src={home2} alt="camera" />
-            </div>
-        </div>
+            </Image>
+        </Services>
     )
 }
+
+const Services = styled(About)`
+    h2 {
+        padding-bottom: 5rem;
+    }
+    p {
+        width: 70%;
+        padding: 2rem 0rem 4rem 0rem;
+    }
+`
+const Cards = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
 
 export default ServicesSection
